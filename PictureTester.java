@@ -25,7 +25,20 @@ public class PictureTester
     caterpillar.mirrorVertical();
     caterpillar.explore();
   }
-  
+  public static void testMirrorVerticalRightToLeft()
+  {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorVerticalRightToLeft();
+    caterpillar.explore();
+  }
+  public static void testMirrorVerticaTopToBottom()
+  {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorVerticalTopToBottom();
+    caterpillar.explore();
+  }
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
@@ -34,7 +47,13 @@ public class PictureTester
     temple.mirrorTemple();
     temple.explore();
   }
-  
+   public static void cropAndCopy()
+  {
+    Picture temple = new Picture("picture1.jpg");
+    temple.explore();
+    temple.mirrorTemple();
+    temple.explore();
+  }
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
