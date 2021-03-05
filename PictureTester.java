@@ -14,6 +14,7 @@ public class PictureTester
     Picture beach = new Picture("beach.jpg");
     beach.explore();
     beach.zeroBlue();
+    beach.zeroRed();
     beach.explore();
   }
   
@@ -47,13 +48,7 @@ public class PictureTester
     temple.mirrorTemple();
     temple.explore();
   }
-   public static void cropAndCopy()
-  {
-    Picture temple = new Picture("picture1.jpg");
-    temple.explore();
-    temple.mirrorTemple();
-    temple.explore();
-  }
+ 
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
@@ -61,7 +56,13 @@ public class PictureTester
     swan.edgeDetection(10);
     swan.explore();
   }
-  
+  public static void testCropAndCopy()
+  {Picture temple = new Picture("temple.jpg");
+   Picture beach = new Picture("beach.jpg");
+   temple.explore();
+   temple.cropAndCopy(beach,50,150,60,200,200,0);
+   temple.explore();
+}
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)

@@ -72,7 +72,6 @@ public class Picture extends SimplePicture
 
     ////////////////////// methods ///////////////////////////////////////
 
-    
     /**
      * Method to return a string with information about this picture.
      * @return a string with information about the picture such as fileName,
@@ -86,6 +85,7 @@ public class Picture extends SimplePicture
         return output;
 
     }
+
     public void zeroRed()
     {
         Pixel[][] pixels = this.getPixels2D();
@@ -97,7 +97,9 @@ public class Picture extends SimplePicture
             }
         }
     }
+
     
+ 
     /** Method to set the blue to 0 */
     public void zeroBlue()
     {
@@ -110,17 +112,7 @@ public class Picture extends SimplePicture
             }
         }
     }
-    public void collage()
-    {
-      Pixel[][] pixels = this.getPixels2D();
-        for (Pixel[] rowArray : pixels)
-        {
-            for (Pixel pixelObj : rowArray)
-            {
-                pixelObj.setBlue(0);
-            }
-        }
-    }
+
     /** Method that mirrors the picture around a 
      * vertical mirror in the center of the picture
      * from left to right */
@@ -148,7 +140,7 @@ public class Picture extends SimplePicture
         Pixel rightPixel = null;
         int width = pixels[0].length;
         for (int row = 0; row < pixels.length; row++)
-        {   for (int col = 0; col < width / 2; col++)
+        {   for (int col = 0; col < width/2; col++)
             {
                 leftPixel = pixels[row][col];
                 rightPixel = pixels[row][width - 1 - col];
@@ -234,22 +226,47 @@ public class Picture extends SimplePicture
         Picture beach = new Picture("beach.jpg");
         beach.explore();
         beach.zeroBlue();
-        beach.explore();
+        beach.explore();}
+      
+public void mirror()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel leftPixel = null;
+        Pixel rightPixel = null;
+        int width = pixels[0].length;
+        for (int row = 0; row < pixels.length; row++)
+        {   for (int col = 0; col < width/2; col++)
+            {
+                leftPixel = pixels[row][col];
+                rightPixel = pixels[row][width - 1 - col];
+                leftPixel.setColor(rightPixel.getColor());
+
+            }
+        } 
     }
 
-    public void cropAndCopy( )
-    {   Pixel leftPixel = null;
-        Pixel rightPixel = null;
+    public void cropAndCopy( Picture sourcePicture, int startSourceRow, int endSourceRow,
+int startSourceCol, int endSourceCol, int startDestRow, int startDestCol
+)
+    {   
+        Pixel source = null;
+        Pixel dest = null;
         Pixel[][] pixels = this.getPixels2D();
-        Color rightColor = null;
-        
-        for (int row = 1; row<= 3; row++)
+        Pixel[][] sourcePic  = sourcePicture.getPixels2D();
+        int x = 0;
+        int y =0;
+        for (int row = startSourceRow; row <= endSourceRow; row++)
         {
-            for (int col = 2; col<= 5; col++)
-            {leftPixel = pixels[row][col];
-             rightPixel = pixels[row][col];
+            for (int col =startSourceCol; col<= endSourceCol; col++)
+            {   source = sourcePic[row][col];
+                dest = pixels[startDestRow + x][startDestCol + y];
+                dest.setColor(source.getColor());
+                y++;
             }
-        }} 
-      
-      // this } is the end of class Picture, put all new methods before this
+            x++;
+            y=0;
+        }
     }
+
+    // this } is the end of class Picture, put all new methods before this
+}
